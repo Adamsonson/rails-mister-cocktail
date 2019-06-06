@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'httparty'
+
+url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+response = HTTParty.get(url)
+response.parsed_response['drinks'].each do |ingredient|
+  Ingredient.new(name: ingredient['strIngredient1']).save!
+end
