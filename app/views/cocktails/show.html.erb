@@ -1,27 +1,33 @@
 <div class="title-section">
   <h1><%= @cocktail.name %></h1>
   <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-  <div class="control-section">
-    <%= link_to 'Back', root_path, class: "btn btn-primary" %>
-  </div>
 </div>
 
-<div>
-  <p>Doses:</p>
+<div class="doses">
+  <p>Ingrediences and dosing:</p>
   <% @doses.each do |dose| %>
-    <li class="dose"><%= dose.description %> Ingredients:<%= dose.ingredient.name %></li>
+    <li class="dose"><%= dose.ingredient.name %> - <%= dose.description %>
     <%= link_to 'delete', cocktail_dose_path(@cocktail,dose.id), method: :delete, class: "btn btn-danger"%>
   <% end %>
+  </li>
 </div>
 
 
 <div class="dose_creation_form">
+
 <%= simple_form_for [@cocktail, @dose], url: cocktail_doses_path(@cocktail), method: :post  do |f| %>
+  <br>
+  <p>Add new dose of an ingredient</p>
   <%= f.label :description %>
   <%= f.text_field :description %>
 
   <%= f.association :ingredient, prompt: "Choose an Ingredient" %>
-
-  <%= f.submit %>
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+    <i class="icon-ok icon-white"></i> Add
+  <% end %>
 <% end %>
 </div>
+
+  <div class="control-section">
+    <%= link_to 'Go to cocktails', root_path, class: "btn btn-primary" %>
+  </div>
