@@ -1,1 +1,46 @@
 // Specific CSS for your home-page
+.navbar-lewagon {
+  justify-content: space-between;
+  background: #2A6104;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.nav-item {
+  margin-right: 10px;
+  margin-top: 10px;
+
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 125px 0;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner a {
+  text-decoration: none;
+  color: green;
+  font-weight: bold;
+}

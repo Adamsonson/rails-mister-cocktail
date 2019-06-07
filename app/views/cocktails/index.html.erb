@@ -1,9 +1,62 @@
-<h1>Cocktails</h1>
-<ul>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://thumbs.dreamstime.com/b/pickle-vector-illustration-72947622.jpg"%>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+          <div class="search-form-control form-group">
+            <input class="form-control string required" type="text" name="search[query]" id="search_query" value="Search a cocktail" />
+          </div>
+        <% end %>
+      </li>
+      <l  i class="nav-item dropdown">
+        <%= image_tag "https://image.flaticon.com/icons/svg/128/128453.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Add cocktail", new_cocktail_path, class: "dropdown-item" %>
+          <%= link_to "Delete cocktail", "#", class: "dropdown-item" %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fpixfeeds.com%2Fimages%2F5%2F287470%2F1200-99600301-beautiful-outdoor-cocktail-bar.jpg&f=1);">
+  <div class="container">
+    <h1>PICKLE COCTAIL</h1>
+<!--     <p>Change your life and learn to code at one of our campuses around the world.</p> -->
+    <p>pick a coctail for your party or <%= link_to 'create a new one', new_cocktail_path%></p>
+  </div>
+</div>
+
+<div class="main-container">
+    <div class="cards">
+      <% @cocktails.each do |cocktail| %>
+        <div class="card" style="background-image: url(<%= cocktail.photo %>)">
+          <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+
+<!-- <ul>
 <% @cocktails.each do |cocktail| %>
   <li class="cocktail">
     <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
   </li>
 <% end %>
-</ul>
+</ul> -->
 <%= link_to 'Add new cocktail', new_cocktail_path, class: "btn btn-primary" %>
+
+
+
+
+

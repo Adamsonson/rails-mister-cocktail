@@ -13,3 +13,8 @@ response = HTTParty.get(url)
 response.parsed_response['drinks'].each do |ingredient|
   Ingredient.new(name: ingredient['strIngredient1']).save!
 end
+
+url = "http://static.giantbomb.com/uploads/original/9/99864/2419866-nes_console_set.png"
+cocktail = Article.new(name: 'NES')
+cocktail.remote_photo_url = url
+cocktail.save
