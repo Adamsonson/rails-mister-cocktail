@@ -9,7 +9,18 @@
   <p>Doses:</p>
   <% @doses.each do |dose| %>
     <li class="dose"><%= dose.description %> Ingredients:<%= dose.ingredient.name %></li>
+    <%= link_to 'delete', cocktail_dose_path(@cocktail,dose.id), method: :delete, data: {confirm: 'You want to do it??'}, class: "btn btn-danger"%>
   <% end %>
 </div>
-<%= link_to 'Add dose', new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
 
+
+<div class="dose_creation_form">
+<%= simple_form_for [@cocktail, @dose], url: cocktail_doses_path(@cocktail), method: :post  do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.association :ingredient, prompt: "Choose an Ingredient" %>
+
+  <%= f.submit %>
+<% end %>
+</div>
