@@ -2,6 +2,7 @@ class CocktailsController < ApplicationController
 
   def index
     @cocktails = Cocktail.all
+    # test to be deleted
   end
 
   def show
